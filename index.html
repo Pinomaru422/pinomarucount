@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>画像の上でカウントアップ・カウントダウン</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        #counter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        button {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://github.com/Pinomaru422/pinomarucount/blob/main/mon02.png?raw=true" alt="背景画像">
+        <div id="counter">000000</div>
+    </div>
+    <br>
+    <button onclick="countUp()">▲</button>
+    <button onclick="countDown()">▼</button>
+
+    <script>
+        let count = 0;
+
+        function updateCounter() {
+            // カウントを6桁にフォーマットして表示
+            document.getElementById('counter').textContent = String(count).padStart(6, '0');
+        }
+
+        function countUp() {
+            if (count < 999999) {
+                count++;
+                updateCounter();
+            }
+        }
+
+        function countDown() {
+            if (count > 0) {
+                count--;
+                updateCounter();
+            }
+        }
+
+        // 初期表示を6桁にフォーマット
+        updateCounter();
+    </script>
+</body>
+</html>
